@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+
+  html {
+    
+    height: 10000px;
+    width: 4000px;
+  }
+  
+  div {
+    width: 100px;
+    height: 100px;
+    background-color: #000;
+    
+    position: fixed;
+    top: 2000px;
+  }
+
+</style>
+</head>
+<body>
+
+<div></div>
+<!-- Scripts Start -->
+<script type="text/javascript" src="./jquery.js"></script>
+<script type="text/javascript" src="./jquery.mousewheel.min.js"></script>
+<script type="text/javascript">
+
+// ------------------------------------------------------------
+//
+//  mode
+//
+// ------------------------------------------------------------
+
+var mode = 'scroll'; // default
+
+$(function(){
+
+  var ref, ref1, param, key, value;
+
+  ref = location.search.replace('?', '').split('&');
+
+  for (i = 0, len = ref.length; i < len; i++) {
+
+    param = ref[i];
+    ref1 = param.split('='), key = ref1[0], value = ref1[1];
+
+    if (key === 'scroll') {
+      if (value === '1') {
+        mode = 'scroll';
+      }
+    }
+    if (key === 'mousewheel') {
+      if (value === '1') {
+        mode = 'mousewheel';
+      }
+    }
+    if (key === 'resize') {
+      if (value === '1') {
+        mode = 'resize';
+      }
+    }
+    if (key === 'mousemove') {
+      if (value === '1') {
+        mode = 'mousemove';
+      }
+    }
+
+  }
+
+})
+
+//--------------------------------------------------
+//
+//  scroll
+//
+//--------------------------------------------------
+$(function(){
+
+  var Timer = false;
+  var isStart = true;
+
+  function start(e) {
+
+    if (isStart) {
+      isStart = false;
+      console.log('scrollStart');
+
+      // 処理
+
+
+
+    };
+
+  }
+
+  function end(e) {
+
+    if (Timer !== false) {
+        clearTimeout(Timer);
+    }
+    Timer = setTimeout(function() {
+
+        if (e.type == 'scroll') {
+          console.log('scrollEnd');
+          isStart = true;
+        }
+
+        // 何らかの処理
+
+
+
+    }, 200);
+
+  }
+
+  function onScroll(e) {
+
+    start(e);
+    end(e);
+
+  }
+
+  function setEvents() {
+
+    $(window).on('scroll', onScroll);
+    
+  }
+
+  function main() {
+
+    setEvents();
+
+  }
+
+  if (mode == 'scroll') main();
+
+})
+
+//--------------------------------------------------
+//
+//  mousewheel
+//
+//--------------------------------------------------
+$(function(){
+
+  var Timer = false;
+  var isStart = true;
+
+  function start(e) {
+
+    if (isStart) {
+      isStart = false;
+      console.log('mousewheelStart');
+
+      // 処理
+
+
+
+    };
+
+  }
+
+  function end(e) {
+
+    if (Timer !== false) {
+        clearTimeout(Timer);
+    }
+    Timer = setTimeout(function() {
+
+        if (e.type == 'mousewheel') {
+          console.log('mousewheelEnd');
+          isStart = true;
+        }
+
+        // 何らかの処理
+
+
+
+    }, 200);
+
+  }
+
+  function onMouseWheel(e) {
+
+    start(e);
+    end(e);
+
+  }
+
+  function setEvents() {
+
+    $(window).on('mousewheel', onMouseWheel);
+    
+  }
+
+  function main() {
+
+    setEvents();
+
+  }
+
+  if (mode == 'mousewheel') main();
+
+})
+
+//--------------------------------------------------
+//
+//  resize
+//
+//--------------------------------------------------
+$(function(){
+
+  var Timer = false;
+  var isStart = true;
+
+  function start(e) {
+
+    if (isStart) {
+      isStart = false;
+      console.log('resizeStart');
+
+      // 処理
+
+
+
+    };
+
+  }
+
+  function end(e) {
+
+    if (Timer !== false) {
+        clearTimeout(Timer);
+    }
+    Timer = setTimeout(function() {
+
+        if (e.type == 'resize') {
+          console.log('resizeEnd');
+          isStart = true;
+        }
+
+        // 何らかの処理
+
+
+
+    }, 200);
+
+  }
+
+  function onResize(e) {
+
+    start(e);
+    end(e);
+
+  }
+
+  function setEvents() {
+
+    $(window).on('resize', onResize);
+    
+  }
+
+  function main() {
+
+    setEvents();
+
+  }
+
+  if (mode == 'resize') main();
+
+})
+
+//--------------------------------------------------
+//
+//  resize
+//
+//--------------------------------------------------
+$(function(){
+
+  var Timer = false;
+  var isStart = true;
+
+  function start(e) {
+
+    if (isStart) {
+      isStart = false;
+      console.log('mousemoveStart');
+
+      // 処理
+
+
+
+    };
+
+  }
+
+  function end(e) {
+
+    if (Timer !== false) {
+        clearTimeout(Timer);
+    }
+    Timer = setTimeout(function() {
+
+        if (e.type == 'mousemove') {
+          console.log('mousemoveEnd');
+          isStart = true;
+        }
+
+        // 何らかの処理
+
+
+
+    }, 200);
+
+  }
+
+  function onMousemove(e) {
+
+    start(e);
+    end(e);
+
+  }
+
+  function setEvents() {
+
+    $(window).on('mousemove', onMousemove);
+    
+  }
+
+  function main() {
+
+    setEvents();
+
+  }
+
+  if (mode == 'mousemove') main();
+
+})
+
+</script>
+</body>
+</html>
